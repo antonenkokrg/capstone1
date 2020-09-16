@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card-deck justify-content-center">
+        {% for trainer in trainers %}
+        <div class="row">
+        <div class="col-sm px-4 py-4">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top img-thumbnail" style="height: 250px;" src="{{ trainer.image_url}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ trainer.username  }}</h5>
+            <p class="card-text">{{trainer.about}}</p>
+            <a href="/users/{{ trainer.id  }}" class="btn btn-primary">Details...</a>
+          </div>
+        </div>
+      </div>
+    </div>
+        {% endfor %}
+      </div>
+{% endblock %}

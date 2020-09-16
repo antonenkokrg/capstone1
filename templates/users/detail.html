@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm px-4 py-4">
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top img-thumbnail" style="height: 250px;" src="{{ user.image_url}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{ user.username  }}</h5>
+      <p class="card-text">{{user.about}}</p>
+
+
+      {% if g.user.id == user.id %}
+      <a href="/users/profile" class="btn btn-danger mx-3">Edit</a>
+      {% endif %}
+      
+    </div>
+  </div>
+</div>
+<div class="col-sm px-4 py-4">
+  sdkvnkasnvklaks'vmc;lasmvl;
+</div>
+</div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>See all the trainings!</h1>
+
+  
+{% for training in trainings %}
+<div class="card text-center">
+  <div class="card-body ">
+    <h5 class="card-title">{{ training.title }}</h5>
+    <p class="card-text">{{ training.description }}</p>
+    {% if g.user.is_trainer %}
+    <form>
+      <button class="btn btn-warning"
+              formaction="/trainings/{{training.id}}"
+              formmethod="GET">Edit
+      </button>
+      <button class="btn btn-danger"
+              formaction="/trainings/{{training.id}}/delete"
+              formmethod="POST">Delete
+      </button>
+    </form>
+    {% else %}
+    <form>
+      <button class="btn btn-primary"
+              formaction="/trainings/{{training.id}}/book"
+              formmethod="POST">Book
+      </button>
+    </form>
+
+    {% endif %}
+  </div>
+  <div class="card-footer text-muted">
+    {{ training.date }}
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul>
+  {% for training in user.user_trainings %}
+    <li><a href="/playlists/{{training.id}}">{{ training.title }}</a></li>
+  {% endfor %}
+  </ul>
+
+{% endblock %}
