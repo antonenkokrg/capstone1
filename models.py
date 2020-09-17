@@ -43,7 +43,7 @@ class Trainings(db.Model):
     participants = db.relationship('User', secondary="trainings_users", 
                                     cascade="all,delete", backref="trainings")
 
-    # trainer_user = db.relationship("User", backref="training", cascade="all,delete")
+    trainer_user = db.relationship("User", backref="training", cascade="all,delete")
 
 
 class Trainings_users(db.Model):
