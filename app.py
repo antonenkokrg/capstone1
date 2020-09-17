@@ -315,7 +315,7 @@ def homepage():
         return render_template('home.html', trainers=trainers)
 
     else:
-        return render_template('home-anon.html')
+        return render_template('login.html')
 
 
 @app.after_request
