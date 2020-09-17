@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>People who booked training</h1>
+
+<div class="card text-center">
+  <div class="card-body ">
+    <h5 class="card-title">{{ training.title }}</h5>
+    <p class="card-text">{{ training.description }}</p>
+  </div>
+  <div class="card-footer text-muted">
+    {{ training.date }} 
+  </div>
+</div>
+<ul class="list-group list-group-flush pt-5">
+{% for user in training.participants %}
+<li class="list-group-item">{{user.username}}</li>
+{% endfor %}
+  </ul>
+{% endblock %}

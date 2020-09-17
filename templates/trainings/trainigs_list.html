@@ -10,33 +10,35 @@
   <div class="card-body ">
     <h5 class="card-title">{{ training.title }}</h5>
     <p class="card-text">{{ training.description }}</p>
-    {% if g.user.is_trainer %}
     <form>
+    <button class="btn btn-primary"
+              formaction="/trainings/{{training.id}}">Details
+      </button>
+    {% if g.user.is_trainer and g.user.id == training.trainer_users_id %}
+    
       <button class="btn btn-warning"
-              formaction="/trainings/{{training.id}}"
+              formaction="/trainings/{{training.id}}/edit"
               formmethod="GET">Edit
       </button>
       <button class="btn btn-danger"
               formaction="/trainings/{{training.id}}/delete"
               formmethod="POST">Delete
       </button>
-    </form>
-    {% endif %}
-
+    
+    {%else%}
     {% if training in g.user.user_trainings%}
-    <form>
       <button class="btn btn-primary"
               formaction="/trainings/{{training.id}}/unbook"
               formmethod="POST">UnBook
       </button>
-    </form>
     {% else %}
-    <form>
       <button class="btn btn-primary"
               formaction="/trainings/{{training.id}}/book"
               formmethod="POST">Book
       </button>
-    </form>
+   
+    {% endif %}
+      </form>
     {% endif %}
     
   </div>

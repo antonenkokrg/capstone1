@@ -142,7 +142,8 @@ def users_show(user_id):
     #             .order_by(Message.timestamp.desc())
     #             .limit(100)
     #             .all())
-    return render_template('users/detail.html', user=user)
+    trainings = Trainings.query.filter_by(trainer_users_id=g.user.id).all()
+    return render_template('users/detail.html', user=user, trainings=trainings)
 
 @app.route('/users/profile', methods=["GET", "POST"])
 def profile():
@@ -202,6 +203,18 @@ def show_my_trainigs():
     return render_template('trainings/trainigs_list.html', trainings=trainings)
 
 
+
+
+@app.route('/trainings/<training_id>')
+def trainings_detail(training_id):
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+
+    training = Trainings.query.get_or_404(training_id)
+    return render_template('trainings/detail.html', training=training)
+
+
 @app.route('/trainings/<training_id>/delete', methods=["POST"])
 def delete_training(training_id):
     """Delete training."""
@@ -215,7 +228,7 @@ def delete_training(training_id):
 
     return redirect("/mytrainings")
 
-@app.route('/trainings/<training_id>', methods=["GET", "POST"])
+@app.route('/trainings/<training_id>/edit', methods=["GET", "POST"])
 def edit_training(training_id):
     if not g.user:
         flash("Access unauthorized.", "danger")
