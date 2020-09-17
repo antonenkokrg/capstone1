@@ -18,7 +18,19 @@
   </div>
 </div>
 <div class="col-sm px-4 py-4">
-  sdkvnkasnvklaks'vmc;lasmvl;
+  <div class="h2">Upcoming Trainings</div>
+  <ul>
+  {% for training in user.user_trainings %}
+  <form>
+  <li><a class="h3" href="/playlists/{{training.id}}">{{ training.title }}</a> 
+    <button class="btn btn-primary"
+            formaction="/trainings/{{training.id}}/unbook"
+            formmethod="POST">UnBook
+    </button>
+  </form>
+</li>
+  {% endfor%}
+</ul>
 </div>
 </div>
 

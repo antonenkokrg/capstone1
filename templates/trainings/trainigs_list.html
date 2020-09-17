@@ -21,6 +21,15 @@
               formmethod="POST">Delete
       </button>
     </form>
+    {% endif %}
+
+    {% if training in g.user.user_trainings%}
+    <form>
+      <button class="btn btn-primary"
+              formaction="/trainings/{{training.id}}/unbook"
+              formmethod="POST">UnBook
+      </button>
+    </form>
     {% else %}
     <form>
       <button class="btn btn-primary"
@@ -28,11 +37,11 @@
               formmethod="POST">Book
       </button>
     </form>
-
     {% endif %}
+    
   </div>
   <div class="card-footer text-muted">
-    {{ training.date }}
+    {{ training.date }} 
   </div>
 </div>
 {% endfor %}

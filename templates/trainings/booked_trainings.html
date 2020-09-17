@@ -2,10 +2,15 @@
 
 {% block content %}
 
-<ul>
+
   {% for training in user.user_trainings %}
-    <li><a href="/playlists/{{training.id}}">{{ training.title }}</a></li>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title h2">{{ training.title }}</h5>
+      <p class="card-text"> {{ training.description }}</p>
+      <p class="card-text"><small class="text-muted">{{ training.date }}</small></p>
+    </div>
+  </div>
   {% endfor %}
-  </ul>
 
 {% endblock %}

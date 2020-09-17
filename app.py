@@ -269,6 +269,18 @@ def book_training(training_id):
 
     return redirect("/trainings/all")
 
+@app.route('/trainings/<training_id>/unbook', methods=["POST"])
+def unbook_training(training_id):
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+
+    Trainings_users.query.filter_by(users_id=g.user.id,trainings_id=training_id).delete()
+    db.session.commit()
+
+    return redirect("/trainings/all")
+
 
 
 
