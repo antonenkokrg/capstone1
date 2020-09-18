@@ -8,7 +8,7 @@
 {% for training in trainings %}
 <div class="card text-center">
   <div class="card-body ">
-    <h5 class="card-title">{{ training.title }}</h5>
+    <h5 class="card-title">{{ training.title }} <span class="badge badge-secondary">Booked {{training.participants | length}}</span></h5>
     <p class="card-text">{{ training.description }}</p>
     <form>
     <button class="btn btn-primary"

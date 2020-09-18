@@ -134,14 +134,6 @@ def users_show(user_id):
 
     user = User.query.get_or_404(user_id)
 
-    # snagging messages in order from the database;
-    # user.messages won't be in order by default
-    # messages = (Message
-    #             .query
-    #             .filter(Message.user_id == user_id)
-    #             .order_by(Message.timestamp.desc())
-    #             .limit(100)
-    #             .all())
     trainings = Trainings.query.filter_by(trainer_users_id=g.user.id).all()
     return render_template('users/detail.html', user=user, trainings=trainings)
 
@@ -182,9 +174,8 @@ def add_training():
         title = form.title.data
         description = form.description.data
         date = form.date.data
-        trainer_users_id = g.user.id
 
-        training = Trainings(title=title, description=description, date=date,trainer_users_id=trainer_users_id)
+        training = Trainings(title=title, description=description, date=date,trainer_users_id=g.user.id)
         db.session.add(training)
         db.session.commit()
 

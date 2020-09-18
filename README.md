@@ -7,6 +7,7 @@ This application created to help you find your online trainer, coach.
 2. in folder run command python3 -m venv venv
 3. . venv/bin/activate
 4. pip install -r requirements.txt
+5. crearedb capstone1
 5. python seed.py
 6. flask run
 

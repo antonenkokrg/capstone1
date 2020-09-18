@@ -31,8 +31,8 @@
   <ul>
   {% for training in user.user_trainings %}
   <form>
-  <li><a class="h3" href="/playlists/{{training.id}}">{{ training.title }}</a> 
-    <button class="btn btn-primary"
+  <li><a class="h3" href="/trainings/{{training.id}}">{{ training.title }}     </a> 
+    <button class="btn btn-primary btn-sm"
             formaction="/trainings/{{training.id}}/unbook"
             formmethod="POST">UnBook
     </button>
