@@ -111,23 +111,6 @@ def logout():
 ##############################################################################
 # General user routes:
 
-@app.route('/users')
-def list_users():
-    """Page with listing of users.
-
-    Can take a 'q' param in querystring to search by that username.
-    """
-
-    search = request.args.get('q')
-
-    if not search:
-        users = User.query.all()
-    else:
-        users = User.query.filter(User.username.like(f"%{search}%")).all()
-
-    return render_template('users/index.html', users=users)
-
-
 @app.route('/users/<int:user_id>')
 def users_show(user_id):
     """Show user profile."""

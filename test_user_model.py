@@ -95,25 +95,4 @@ class UserModelTestCase(TestCase):
         self.assertEqual(new_training.description, "For your health")
         self.assertEqual(new_training.trainer_users_id, self.uid1)
 
-
-    # #####Follow test#####
-    # def test_user_follows(self):
-    #     self.u1.following.append(self.u2)
-    #     db.session.commit()
-
-    #     self.assertEqual(len(self.u2.following), 0)
-    #     self.assertEqual(len(self.u2.followers), 1)
-    #     self.assertEqual(len(self.u1.followers), 0)
-    #     self.assertEqual(len(self.u1.following), 1)
-
-    #     self.assertEqual(self.u2.followers[0].id, self.u1.id)
-    #     self.assertEqual(self.u1.following[0].id, self.u2.id)
-
-
-    # def test_user_unfollows(self):
-    #     self.u1.following.append(self.u2)
-    #     if self.u2 in self.u1.following:
-    #         self.u1.following = [follower for follower in self.u1.following if follower != self.u2]
-    #     db.session.commit()
-    #     self.assertEqual(len(self.u2.followers), 0)
-
+    
