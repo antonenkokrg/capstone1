@@ -134,16 +134,8 @@ def users_show(user_id):
 
     user = User.query.get_or_404(user_id)
 
-    # snagging messages in order from the database;
-    # user.messages won't be in order by default
-    # messages = (Message
-    #             .query
-    #             .filter(Message.user_id == user_id)
-    #             .order_by(Message.timestamp.desc())
-    #             .limit(100)
-    #             .all())
     trainings = Trainings.query.filter_by(trainer_users_id=g.user.id).all()
-    return render_template('users/detail.html', user=user, trainings=tr)
+    return render_template('users/detail.html', user=user, trainings=trainings)
 
 @app.route('/users/profile', methods=["GET", "POST"])
 def profile():
