@@ -32,10 +32,12 @@
   {% for training in user.user_trainings %}
   <form>
   <li><a class="h3" href="/trainings/{{training.id}}">{{ training.title }}     </a> 
+    {% if g.user.id == user.id %}
     <button class="btn btn-primary btn-sm"
             formaction="/trainings/{{training.id}}/unbook"
             formmethod="POST">UnBook
     </button>
+    {% endif %}
   </form>
 </li>
   {% endfor%}
