@@ -134,7 +134,7 @@ def users_show(user_id):
 
     user = User.query.get_or_404(user_id)
 
-    trainings = Trainings.query.filter_by(trainer_users_id=g.user.id).all()
+    trainings = Trainings.query.filter_by(trainer_users_id=user_id).all()
     return render_template('users/detail.html', user=user, trainings=trainings)
 
 @app.route('/users/profile', methods=["GET", "POST"])
